@@ -119,7 +119,7 @@ local dropdownindex = 50
 function AddWindow(options)
     local options = options or {}
 	options = Library:validate({
-		name = string.format('Methamphetamine.club <font color="rgb(%d, %d, %d)">[v1.0]</font>', Library.Colors.Accent.R * 255, Library.Colors.Accent.G * 255, Library.Colors.Accent.B * 255'),
+		name = string.format('Methamphetamine.club <font color="rgb(%d, %d, %d)">[v1.0]</font>', Library.Colors.Accent.R * 255, Library.Colors.Accent.G * 255, Library.Colors.Accent.B * 255),
         size = UDim2.new(0, 625, 0, 400),
 	}, options or {})
     local menu = {CurrentTab = nil}
