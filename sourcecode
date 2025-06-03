@@ -448,31 +448,92 @@ end
                     Active = true, 
                     Draggable = true, 
                     BorderColor3 = Color3.fromRGB(0, 0, 0),
-                    Size = UDim2.new(0, ((#animated_text / 2) * 5) + 13, 0, 40),
-                    BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+                    Size = UDim2.new(0, ((#animated_text / 2) * 5) + 13, 0, 24), -- reduced height
+                    BackgroundColor3 = Color3.fromRGB(20, 20, 20) -- darker background
                 })
                 
-                local accent_line = library:create("Frame", {
+                -- Add rounded corners
+                local corner = library:create("UICorner", {
                     Parent = inline1,
-                    Name = "",
-                    BorderColor3 = Color3.fromRGB(34, 34, 34),
-                    Size = UDim2.new(1, 0, 0, 2),
-                    BorderSizePixel = 0,
-                    BackgroundColor3 = themes.preset.accent 
+                    CornerRadius = UDim.new(0, 4)
                 })
-
-                library:apply_theme(accent_line, "accent", "BackgroundColor3") 
                 
-                local depth = library:create("Frame", {
+                -- Remove accent line and depth frame for cleaner look
+                
+                local main = library:create("Frame", {
                     Parent = inline1,
                     Name = "",
-                    BackgroundTransparency = 0.5,
-                    Position = UDim2.new(0, 0, 0, 1),
+                    Position = UDim2.new(0, 2, 0, 2),
                     BorderColor3 = Color3.fromRGB(0, 0, 0),
-                    Size = UDim2.new(1, 0, 0, 1),
+                    Size = UDim2.new(1, -4, 1, -4),
                     BorderSizePixel = 0,
-                    BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+                    BackgroundColor3 = Color3.fromRGB(30, 30, 30) -- slightly lighter than parent
                 })
+                
+                local corner2 = library:create("UICorner", {
+                    Parent = main,
+                    CornerRadius = UDim.new(0, 3)
+                })
+                
+                local name = library:create("TextLabel", {
+                    Parent = main,
+                    Name = "",
+                    FontFace = library.font,
+                    TextColor3 = Color3.fromRGB(200, 200, 200), -- brighter text
+                    BorderColor3 = Color3.fromRGB(0, 0, 0),
+                    Text = "Utopiahack ~ Apocalypse rising 2 ~ v1.0.0",
+                    TextStrokeTransparency = 0.5,
+                    Size = UDim2.new(1, 0, 1, 0),
+                    Position = UDim2.new(0, 0, 0, 0),
+                    BackgroundTransparency = 1,
+                    TextXAlignment = Enum.TextXAlignment.Center,
+                    BorderSizePixel = 0,
+                    TextSize = 12,
+                    BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                })
+                
+                -- Add subtle shadow effect
+                local shadow = library:create("ImageLabel", {
+                    Parent = inline1,
+                    Name = "",
+                    AnchorPoint = Vector2.new(0.5, 0.5),
+                    BackgroundTransparency = 1,
+                    Position = UDim2.new(0.5, 0, 0.5, 1),
+                    Size = UDim2.new(1, 6, 1, 6),
+                    ZIndex = 1,
+                    Image = "rbxassetid://7912134082",
+                    ImageColor3 = Color3.fromRGB(0, 0, 0),
+                    ImageTransparency = 0.6,
+                    ScaleType = Enum.ScaleType.Slice,
+                    SliceCenter = Rect.new(Vector2.new(81, 81), Vector2.new(81, 81)),
+                    SliceScale = 0.04
+                })
+                
+                task.spawn(function()
+                    while true do 
+                        if __holder.Visible then 
+                            -- No need for animation, just keep the static text
+                            name.Text = "Utopiahack ~ Apocalypse rising 2 ~ v1.0.0"
+                        end 
+                        task.wait(1)
+                    end 
+                end)
+            -- 
+
+            -- window
+                local inline1 = library:create("Frame", {
+                    Parent = library.gui,
+                    Name = "",
+                    Active = true, 
+                    Draggable = true,
+                    Position = UDim2.new(0.5, -cfg.size.X.Offset/2, 0.5, -cfg.size.Y.Offset/2),
+                    BorderColor3 = Color3.fromRGB(8, 8, 8),
+                    ZIndex = 2,
+                    Size = cfg.size,
+                    BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+                }) table.insert(library.main_frame, inline1)
+                local WINDOW_PATH = inline1
+                library:make_resizable(inline1)
                 
                 local inline2 = library:create("Frame", {
                     Parent = inline1,
@@ -491,125 +552,6 @@ end
                     BorderColor3 = Color3.fromRGB(57, 57, 57),
                     Size = UDim2.new(1, -4, 1, -4),
                     BackgroundColor3 = Color3.fromRGB(26, 26, 26)
-                })
-                
-                local tab_inline = library:create("Frame", {
-                    Parent = main,
-                    Name = "",
-                    Position = UDim2.new(0, 6, 0, 6),
-                    BorderColor3 = Color3.fromRGB(19, 19, 19),
-                    Size = UDim2.new(1, -12, 1, -12),
-                    BorderSizePixel = 0,
-                    BackgroundColor3 = Color3.fromRGB(19, 19, 19)
-                })
-                
-                local tabs = library:create("Frame", {
-                    Parent = tab_inline,
-                    Name = "",
-                    Position = UDim2.new(0, 2, 0, 2),
-                    BorderColor3 = Color3.fromRGB(56, 56, 56),
-                    Size = UDim2.new(1, -4, 1, -4),
-                    BackgroundColor3 = Color3.fromRGB(22, 22, 22)
-                })
-                
-                local name = library:create("TextLabel", {
-                    Parent = tabs,
-                    Name = "",
-                    FontFace = library.font,
-                    TextColor3 = Color3.fromRGB(170, 170, 170),
-                    BorderColor3 = Color3.fromRGB(0, 0, 0),
-                    Text = "ledger.live",
-                    TextStrokeTransparency = 0.5,
-                    Size = UDim2.new(0, 0, 1, 0),
-                    Position = UDim2.new(0, 8, 0, 0),
-                    BackgroundTransparency = 1,
-                    TextXAlignment = Enum.TextXAlignment.Left,
-                    BorderSizePixel = 0,
-                    AutomaticSize = Enum.AutomaticSize.X,
-                    TextSize = 12,
-                    BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-                })
-
-                local TEXT_ANIMATION_GRADIENT = library:create("UIGradient", {
-                    Parent = name,
-                    Name = "",
-                    Color = ColorSequence.new{
-                        ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
-                        ColorSequenceKeypoint.new(0.01, themes.preset.accent),
-                        ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 255, 255))
-                    }
-                })                
-                
-                local UIPadding = library:create("UIPadding", {
-                    Parent = tabs,
-                    Name = "",
-                    PaddingRight = UDim.new(0, 21)
-                })
-                
-                local glow = library:create("ImageLabel", {
-                    Parent = accent_line,
-                    Name = "",
-                    ImageColor3 = themes.preset.accent,
-                    ScaleType = Enum.ScaleType.Slice,
-                    ImageTransparency = 0.8999999761581421,
-                    BorderColor3 = Color3.fromRGB(0, 0, 0),
-                    BackgroundColor3 = Color3.fromRGB(255, 255, 255),
-                    Image = "http://www.roblox.com/asset/?id=18245826428",
-                    BackgroundTransparency = 1,
-                    Position = UDim2.new(0, -20, 0, -20),
-                    Size = UDim2.new(1, 40, 0, 42),
-                    ZIndex = 2,
-                    BorderSizePixel = 0,
-                    SliceCenter = Rect.new(Vector2.new(21, 21), Vector2.new(79, 79))
-                })
-
-                library:apply_theme(glow, "accent", "ImageColor3") 
-                
-                task.spawn(function()
-                    while true do 
-                        if __holder.Visible then 
-                            for i = 1, #animated_text do 
-                                task.wait(.2)
-                                name.Text = animated_text[i]
-                            end 
-                        end 
-                        task.wait(.2)
-                    end 
-                end)
-            -- 
-
-            -- window
-                local inline1 = library:create("Frame", {
-                    Parent = library.gui,
-                    Name = "",
-                    Active = true, 
-                    Draggable = true,
-                    Position = UDim2.new(0.5, -cfg.size.X.Offset/2, 0.5, -cfg.size.Y.Offset/2),
-                    BorderColor3 = Color3.fromRGB(12, 12, 12),
-                    ZIndex = 2,
-                    Size = cfg.size,
-                    BackgroundColor3 = Color3.fromRGB(35, 35, 38)
-                }) table.insert(library.main_frame, inline1)
-                local WINDOW_PATH = inline1
-                library:make_resizable(inline1)
-                
-                local inline2 = library:create("Frame", {
-                    Parent = inline1,
-                    Name = "",
-                    Position = UDim2.new(0, 1, 0, 1),
-                    BorderColor3 = Color3.fromRGB(0, 0, 0),
-                    Size = UDim2.new(1, -2, 1, -2),
-                    BorderSizePixel = 0,
-                    BackgroundColor3 = Color3.fromRGB(20, 20, 22)
-                })
-                
-                local main = library:create("Frame", {
-                    Parent = inline2,
-                    Name = "",
-                    Position = UDim2.new(0, 1, 0, 1),
-                    BorderColor3 = Color3.fromRGB(45, 45, 50),
-                    Size = UDim2.new(1, -2, 1, -2),
-                    BackgroundColor3 = Color3.fromRGB(20, 20, 22)
                 })
                 
                 local tab_buttons = library:create("Frame", {
@@ -640,19 +582,19 @@ end
                     Parent = main,
                     Name = "",
                     Position = UDim2.new(0, 15, 0, 33),
-                    BorderColor3 = Color3.fromRGB(15, 15, 17),
+                    BorderColor3 = Color3.fromRGB(19, 19, 19),
                     Size = UDim2.new(1, -30, 1, -48),
                     BorderSizePixel = 0,
-                    BackgroundColor3 = Color3.fromRGB(15, 15, 17)
+                    BackgroundColor3 = Color3.fromRGB(19, 19, 19)
                 })
                 
                 local tabs = library:create("Frame", {
                     Parent = tab_inline,
                     Name = "",
-                    Position = UDim2.new(0, 1, 0, 1),
-                    BorderColor3 = Color3.fromRGB(45, 45, 50),
-                    Size = UDim2.new(1, -2, 1, -2),
-                    BackgroundColor3 = Color3.fromRGB(18, 18, 20)
+                    Position = UDim2.new(0, 2, 0, 2),
+                    BorderColor3 = Color3.fromRGB(56, 56, 56),
+                    Size = UDim2.new(1, -4, 1, -4),
+                    BackgroundColor3 = Color3.fromRGB(22, 22, 22)
                 })
 
                 cfg["tab_instance_holder"] = tabs
@@ -672,7 +614,7 @@ end
                     Parent = inline1,
                     Name = "",
                     FontFace = library.font,
-                    TextColor3 = Color3.fromRGB(200, 200, 200),
+                    TextColor3 = Color3.fromRGB(170, 170, 170),
                     BorderColor3 = Color3.fromRGB(0, 0, 0),
                     Text = cfg.name,
                     TextStrokeTransparency = 0.5,
@@ -681,7 +623,7 @@ end
                     Position = UDim2.new(0, 0, 0, -1),
                     Size = UDim2.new(1, 0, 0, 1),
                     ZIndex = 2,
-                    TextSize = 13,
+                    TextSize = 12,
                     BackgroundColor3 = Color3.fromRGB(255, 255, 255)
                 })
                 
@@ -690,13 +632,13 @@ end
                     Name = "",
                     ImageColor3 = themes.preset.accent,
                     ScaleType = Enum.ScaleType.Slice,
-                    ImageTransparency = 0.8,
+                    ImageTransparency = 0.8999999761581421,
                     BorderColor3 = Color3.fromRGB(0, 0, 0),
                     BackgroundColor3 = Color3.fromRGB(255, 255, 255),
                     Image = "http://www.roblox.com/asset/?id=18245826428",
                     BackgroundTransparency = 1,
-                    Position = UDim2.new(0, -15, 0, -15),
-                    Size = UDim2.new(1, 30, 0, 35),
+                    Position = UDim2.new(0, -20, 0, -20),
+                    Size = UDim2.new(1, 40, 0, 42),
                     ZIndex = 2,
                     BorderSizePixel = 0,
                     SliceCenter = Rect.new(Vector2.new(21, 21), Vector2.new(79, 79))
