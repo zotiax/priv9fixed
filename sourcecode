@@ -551,7 +551,7 @@ end
                     BorderColor3 = Color3.fromRGB(8, 8, 8),
                     ZIndex = 2,
                     Size = cfg.size,
-                    BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+                    BackgroundColor3 = Color3.fromRGB(20, 20, 20)
                 }) table.insert(library.main_frame, inline1)
                 local WINDOW_PATH = inline1
                 library:make_resizable(inline1)
@@ -559,20 +559,20 @@ end
                 local inline2 = library:create("Frame", {
                     Parent = inline1,
                     Name = "",
-                    Position = UDim2.new(0, 2, 0, 2),
+                    Position = UDim2.new(0, 1, 0, 1),
                     BorderColor3 = Color3.fromRGB(0, 0, 0),
-                    Size = UDim2.new(1, -4, 1, -4),
+                    Size = UDim2.new(1, -2, 1, -2),
                     BorderSizePixel = 0,
-                    BackgroundColor3 = Color3.fromRGB(26, 26, 26)
+                    BackgroundColor3 = Color3.fromRGB(12, 12, 12)
                 })
                 
                 local main = library:create("Frame", {
                     Parent = inline2,
                     Name = "",
-                    Position = UDim2.new(0, 2, 0, 2),
-                    BorderColor3 = Color3.fromRGB(57, 57, 57),
-                    Size = UDim2.new(1, -4, 1, -4),
-                    BackgroundColor3 = Color3.fromRGB(26, 26, 26)
+                    Position = UDim2.new(0, 1, 0, 1),
+                    BorderColor3 = Color3.fromRGB(40, 40, 40),
+                    Size = UDim2.new(1, -2, 1, -2),
+                    BackgroundColor3 = Color3.fromRGB(20, 20, 20)
                 })
                 
                 local tab_buttons = library:create("Frame", {
@@ -580,8 +580,8 @@ end
                     Name = "",
                     BorderColor3 = Color3.fromRGB(0, 0, 0),
                     BackgroundTransparency = 1,
-                    Position = UDim2.new(0, 16, 0, 4),
-                    Size = UDim2.new(1, -32, 0, 0),
+                    Position = UDim2.new(0, 8, 0, 6),
+                    Size = UDim2.new(1, -16, 0, 0),
                     ZIndex = 2,
                     BorderSizePixel = 0,
                     BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -593,8 +593,8 @@ end
                     Parent = tab_buttons,
                     Name = "",
                     FillDirection = Enum.FillDirection.Horizontal,
-                    HorizontalAlignment = Enum.HorizontalAlignment.Center,
-                    HorizontalFlex = Enum.UIFlexAlignment.Fill,
+                    HorizontalAlignment = Enum.HorizontalAlignment.Left,
+                    HorizontalFlex = Enum.UIFlexAlignment.None,
                     Padding = UDim.new(0, 6),
                     SortOrder = Enum.SortOrder.LayoutOrder
                 })
@@ -602,20 +602,20 @@ end
                 local tab_inline = library:create("Frame", {
                     Parent = main,
                     Name = "",
-                    Position = UDim2.new(0, 15, 0, 33),
-                    BorderColor3 = Color3.fromRGB(19, 19, 19),
-                    Size = UDim2.new(1, -30, 1, -48),
-                    BorderSizePixel = 0,
-                    BackgroundColor3 = Color3.fromRGB(19, 19, 19)
+                    Position = UDim2.new(0, 8, 0, 30),
+                    BorderColor3 = Color3.fromRGB(40, 40, 40),
+                    Size = UDim2.new(1, -16, 1, -38),
+                    BorderSizePixel = 1,
+                    BackgroundColor3 = Color3.fromRGB(12, 12, 12)
                 })
                 
                 local tabs = library:create("Frame", {
                     Parent = tab_inline,
                     Name = "",
-                    Position = UDim2.new(0, 2, 0, 2),
-                    BorderColor3 = Color3.fromRGB(56, 56, 56),
-                    Size = UDim2.new(1, -4, 1, -4),
-                    BackgroundColor3 = Color3.fromRGB(22, 22, 22)
+                    Position = UDim2.new(0, 1, 0, 1),
+                    BorderColor3 = Color3.fromRGB(0, 0, 0),
+                    Size = UDim2.new(1, -2, 1, -2),
+                    BackgroundColor3 = Color3.fromRGB(20, 20, 20)
                 })
 
                 cfg["tab_instance_holder"] = tabs
@@ -623,8 +623,8 @@ end
                 local accent_line = library:create("Frame", {
                     Parent = inline1,
                     Name = "",
-                    BorderColor3 = Color3.fromRGB(34, 34, 34),
-                    Size = UDim2.new(1, 0, 0, 2),
+                    BorderColor3 = Color3.fromRGB(0, 0, 0),
+                    Size = UDim2.new(1, 0, 0, 1),
                     BorderSizePixel = 0,
                     BackgroundColor3 = themes.preset.accent
                 })
@@ -635,16 +635,17 @@ end
                     Parent = inline1,
                     Name = "",
                     FontFace = library.font,
-                    TextColor3 = Color3.fromRGB(170, 170, 170),
+                    TextColor3 = Color3.fromRGB(200, 200, 200),
                     BorderColor3 = Color3.fromRGB(0, 0, 0),
                     Text = cfg.name,
-                    TextStrokeTransparency = 0.5,
+                    TextStrokeTransparency = 0.8,
                     BorderSizePixel = 0,
                     BackgroundTransparency = 1,
-                    Position = UDim2.new(0, 0, 0, -1),
-                    Size = UDim2.new(1, 0, 0, 1),
+                    Position = UDim2.new(0, 8, 0, -1),
+                    Size = UDim2.new(1, -16, 0, 30),
                     ZIndex = 2,
-                    TextSize = 12,
+                    TextXAlignment = Enum.TextXAlignment.Left,
+                    TextSize = 13,
                     BackgroundColor3 = Color3.fromRGB(255, 255, 255)
                 })
                 
@@ -653,14 +654,14 @@ end
                     Name = "",
                     ImageColor3 = themes.preset.accent,
                     ScaleType = Enum.ScaleType.Slice,
-                    ImageTransparency = 0.8999999761581421,
+                    ImageTransparency = 0.8,
                     BorderColor3 = Color3.fromRGB(0, 0, 0),
                     BackgroundColor3 = Color3.fromRGB(255, 255, 255),
                     Image = "http://www.roblox.com/asset/?id=18245826428",
                     BackgroundTransparency = 1,
-                    Position = UDim2.new(0, -20, 0, -20),
-                    Size = UDim2.new(1, 40, 0, 42),
-                    ZIndex = 2,
+                    Position = UDim2.new(0, -15, 0, -15),
+                    Size = UDim2.new(1, 30, 0, 30),
+                    ZIndex = 1,
                     BorderSizePixel = 0,
                     SliceCenter = Rect.new(Vector2.new(21, 21), Vector2.new(79, 79))
                 })
@@ -669,7 +670,7 @@ end
                 local depth = library:create("Frame", {
                     Parent = inline1,
                     Name = "",
-                    BackgroundTransparency = 0.5,
+                    BackgroundTransparency = 0.7,
                     Position = UDim2.new(0, 0, 0, 1),
                     BorderColor3 = Color3.fromRGB(0, 0, 0),
                     Size = UDim2.new(1, 0, 0, 1),
